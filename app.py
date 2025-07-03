@@ -25,6 +25,7 @@ fire_class_input = st.selectbox("Fire Class (0: Not Fire, 1: Fire)", options=[0,
 input_data = pd.DataFrame([[
     temperature, rh, ws, rain, ffmc, dmc, dc, isi, bui, fire_class_input
 ]], columns=['Temperature', 'RH', 'Ws', 'Rain', 'FFMC', 'DMC', 'DC', 'ISI', 'BUI', 'Classes'])
+input_data.drop(columns=['BUI','DC'],axis=1,inplace=True)
 st.header("Prediction")
 if st.button("Predict FWI"):
     scaled_input_data = scaler.transform(input_data)
